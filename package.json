@@ -19,5 +19,8 @@
     "koa2-cors": "^2.0.5",
     "mongoose": "4.11.1",
     "mongoose-beautiful-unique-validation": "^7.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.17.2"
   }
 }
