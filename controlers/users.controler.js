@@ -7,6 +7,15 @@ import ensureToken from '../middlewares/ensureToken';
 
 const userSignupControler = async (ctx) => {
   const { username, email, password } = ctx.request.body;
+
+  if (!username || !email || !password) {
+    ctx.status = 400;
+    ctx.body = {
+      message: 'Invalid query'
+    }
+    return;
+  }
+
   const user = new db.User({
     username,
     email,
@@ -33,6 +42,15 @@ const userSignupControler = async (ctx) => {
 
 const userLoginControler = async (ctx) => {
   const { username, password } = ctx.request.body;
+
+  if (!username || !password) {
+    ctx.status = 400;
+    ctx.body = {
+      message: 'Invalid query'
+    }
+    return;
+  }
+
   try {
     const user = await db.User.findOne({ username })
     if (user.checkPassword(password)) {
